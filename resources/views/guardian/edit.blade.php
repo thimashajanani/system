@@ -8,7 +8,6 @@
             <form action="{{ url('guardians/' .$guardian->id) }}" method="post">
                 {!! csrf_field() !!}
                 @method("PATCH")
-
                 <label>Full Name</label></br>
                 <input type="text" name="name" id="name" value="{{$guardian->name}}"
                        class="form-control"></br>
@@ -18,7 +17,6 @@
                 <label>Relationship</label></br>
                 <input type="text" name="relationship" id="relationship" value="{{$guardian->relationship}}"
                        class="form-control"></br>
-
                 <input type="submit" value="Update" class="btn btn-success"></br>
             </form>
 

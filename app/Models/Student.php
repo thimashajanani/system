@@ -9,8 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    protected $guarded =[];
 
+    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'full_name',
+        'dob',
+        'address',
+        'contact',
+        'email',
+        'guardian'
+    ];
 
     public function guardians()
     {

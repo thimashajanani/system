@@ -13,8 +13,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('guardian_id');
             $table->unsignedInteger('student_id');
-//            $table->foreign('guardian_id')->references('id')->on('guardians');
-//            $table->foreign('student_id')->references('id')->on('students');
             $table->timestamps();
         });
     }

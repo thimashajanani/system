@@ -19,11 +19,7 @@ return new class extends Migration {
             $table->string('contact');
             $table->string('email');
             $table->string('guardian');
-            //$table->unsignedBigInteger('guardian_id')->nullable();
             $table->timestamps();
-
-
-            //$table->foreign('guardian_id')->references('id')->on('guardians')->onDelete('set null');
         });
     }
 

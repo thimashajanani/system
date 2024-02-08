@@ -12,7 +12,6 @@
                         <form action="{{ route('students.store') }}" method="POST">
                         {!! csrf_field() !!}
 
-
                             <div class="form-group">
                                 <label for="name">Full Name</label>
                                 <input type="text" name="name" id="name" class="form-control"
@@ -23,25 +22,21 @@
                                 <input type="text" name="full_name" id="full_name" class="form-control"
                                        placeholder="Enter Name with Initial" required>
                             </div>
-
                             <div class="form-group">
                                 <label for="name">Date of Birth</label>
                                 <input type="date" name="dob" id="dob" class="form-control"
                                        placeholder="Enter Date of Birth" required>
                             </div>
-
                             <div class="form-group">
                                 <label for="name">Address</label>
                                 <input type="text" name="address" id="address" class="form-control"
                                        placeholder="Enter Address" required>
                             </div>
-
                             <div class="form-group">
                                 <label for="name">Contact</label>
                                 <input type="text" name="contact" id="contact" class="form-control"
                                        placeholder="Enter Contact" required>
                             </div>
-
                             <div class="form-group">
                                 <label for="name">Emile</label>
                                 <input type="text" name="email" id="email" class="form-control"
@@ -77,7 +72,6 @@
                                         <input type="text" name="guardian1_contact" id="guardian1_contact"
                                                class="form-control" placeholder="Enter Guardian 1 Contact">
                                     </div>
-
                                 </div>
                             </div>
 
@@ -110,7 +104,6 @@
                                         <input type="text" name="guardian2_contact" id="guardian2_contact"
                                                class="form-control" placeholder="Enter Guardian 2 Contact">
                                     </div>
-
                                 </div>
                             </div>
 
@@ -143,7 +136,6 @@
                                         <input type="text" name="guardian3_contact" id="guardian3_contact"
                                                class="form-control" placeholder="Enter Guardian 3 Contact">
                                     </div>
-
                                 </div>
                             </div>
 

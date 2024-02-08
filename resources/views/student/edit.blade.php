@@ -45,7 +45,6 @@
                             @include('partials.guardian_details', ['guardian' => $guardian2, 'number' => 2])
                             @include('partials.guardian_details', ['guardian' => $guardian3, 'number' => 3])
 
-
                             <button type="submit" class="btn btn-primary mt-3">Update</button>
                         </form>
                     </div>

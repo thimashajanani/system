@@ -11,22 +11,16 @@ class GuardianController extends Controller
     public function index()
     {
         $guardians = Guardian::all();
-//        dd($guardians);
         return view('guardian.show', ['guardians' => $guardians]);
-
-
-        $students =[
-            'student_id' =>[]
+        $students = [
+            'student_id' => []
         ];
         $guardian->students()->sync($request->students);
 
-//        $guardians = Guardian::with('students')->get();
-//        return view('guardian.show', compact('guardians'));
     }
 
     public function create()
     {
-
         return view('guardian.create');
     }
 
@@ -43,20 +37,17 @@ class GuardianController extends Controller
         $guardian->students()->attach($request->input('students'));
     }
 
-
     public function show($id)
     {
         $guardian = Guardian::find($id);
         return view('guardian.show', ['guardian' => $guardian]);
     }
 
-
     public function edit(String $id)
     {
         $guardian = Guardian::find($id);
         return view('guardian.edit', compact('guardian'));
     }
-
 
     public function update(Request $request, $id)
     {

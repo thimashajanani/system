@@ -1,6 +1,5 @@
 @extends('guardian.layout')
 @section('content')
-
     <head>
         <title>Bootstrap Example</title>
         <meta charset="utf-8">
@@ -23,27 +22,22 @@
                             </ul>
                         </div>
                     @endif
-
                     @if (Session::has('update'))
                         <div class="alert alert-info">
                             {{ Session::get('update') }}
                         </div>
                     @endif
-
                     @if (Session::has('destroy'))
                         <div class="alert alert-info">
                             {{ Session::get('destroy') }}
                         </div>
                     @endif
-
-
                     <div class="card-body">
                         <a href="{{ url('/guardians/create') }}" class="btn btn-success btn-sm" title="Add New">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add Guardian
                         </a>
                         <br/>
                         <br/>
-
                         <div class="tableindex-responsive table table-success table-striped">
                             <table class="table">
                                 <thead>
@@ -57,15 +51,12 @@
                                 </thead>
                                 <tbody>
                                 @foreach($guardians as $item)
-
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->name}}</td>
                                         <td>{{ $item->contact }}</td>
                                         <td>{{ $item->relationship}}</td>
                                         <td>
-
-
                                             <a href="{{ route('guardians.show', ['guardian' => $item->id]) }}"
                                                class="btn btn-info m-2"> Show</a>
                                             <a href="{{ route('guardians.edit', ['guardian' => $item->id]) }}"
