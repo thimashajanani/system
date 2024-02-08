@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guardian;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use function NunoMaduro\Collision\Exceptions\getMessage;
 
 
@@ -78,33 +79,41 @@ class StudentController extends Controllers
 
     public function edit(string $id)
     {
+//        $student = Student::find($id);
+//        return view('student.edit', ['student' => $student])->with('students', $student);
+
         $student = Student::find($id);
-        return view('student.edit', ['student' => $student])->with('students', $student);
+        $guardian1 = $student->guardians->get(0);
+        $guardian2 = $student->guardians->get(1);
+        $guardian3 = $student->guardians->get(2);
+
+        return view('student.edit', compact('student', 'guardian1', 'guardian2', 'guardian3'));
     }
 
     public function update(Request $request, $id)
     {
+//        try {
+//            $student = Student::find($id)->update($request->all());
+//            if ($student) {
+//                return redirect('students/')->with('flash_message', 'Student Update');
+//            } else {
+//                return redirect('students/')->with('flash_message', 'please try again');
+//            }
+//        } catch (\Exception $e) {
+//            return redirect('students/')->with('flash_message', $e . getMessage());
+
         try {
-            $student = Student::find($id)->update($request->all());
-            if ($student) {
-                return redirect('students/')->with('flash_message', 'Student Update');
-            } else {
-                return redirect('students/')->with('flash_message', 'please try again');
-            }
-        } catch (\Exception $e) {
-            return redirect('students/')->with('flash_message', $e . getMessage());
-        }
-
-
-        {
             $student = Student::findOrFail($id);
             $student->update($request->all());
-
-
+            return redirect('students')->with('flash_message', 'Stude                      nt Updated Successfully');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return redirect('students/' . $id . '/edit')->with('error', 'Failed to update student details. Please try again.');
         }
-
-
     }
+
+
+
 
     public function destroy($id)
     {
