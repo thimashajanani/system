@@ -61,12 +61,18 @@
                                     <div class="card-header">Personal Information</div>
                                     <div class="card-body">
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><strong>Full Name:</strong> {{ $student->name }}</li>
-                                            <li class="list-group-item"><strong>Name with Initial:</strong> {{ $student->full_name }}</li>
-                                            <li class="list-group-item"><strong>Date of Birth:</strong> {{ $student->dob }}</li>
-                                            <li class="list-group-item"><strong>Address:</strong> {{ $student->address }}</li>
-                                            <li class="list-group-item"><strong>Contact:</strong> {{ $student->contact }}</li>
-                                            <li class="list-group-item"><strong>Email:</strong> {{ $student->email }}</li>
+                                            <li class="list-group-item"><strong>Full Name:</strong> {{ $student->name }}
+                                            </li>
+                                            <li class="list-group-item"><strong>Name with
+                                                    Initial:</strong> {{ $student->full_name }}</li>
+                                            <li class="list-group-item"><strong>Date of
+                                                    Birth:</strong> {{ $student->dob }}</li>
+                                            <li class="list-group-item">
+                                                <strong>Address:</strong> {{ $student->address }}</li>
+                                            <li class="list-group-item">
+                                                <strong>Contact:</strong> {{ $student->contact }}</li>
+                                            <li class="list-group-item"><strong>Email:</strong> {{ $student->email }}
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <head>
         <title>student</title>
         <meta charset="utf-8">
@@ -23,7 +22,6 @@
                             </ul>
                         </div>
                     @endif
-
                     @if (Session::has('update'))
                         <div class="alert alert-info">
                             {{ Session::get('update') }}
@@ -35,15 +33,12 @@
                             {{ Session::get('destroy') }}
                         </div>
                     @endif
-
-
                     <div class="card-body">
                         <a href="{{ url('/students/create') }}" class="btn btn-success btn-sm" title="Add New">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New Student
                         </a>
                         <br/>
                         <br/>
-
                         <div class="tableindex-responsive table table-success table-striped">
                             <table class="table">
                                 <thead>
@@ -70,7 +65,6 @@
                                         <td>{{ $item->contact }}</td>
                                         <td>{{ $item->email}}</td>
                                         <td>
-
                                             <ul>
                                                 @foreach($item->guardians as $guardian)
                                                     <li>{{ $guardian->name }}</li>
@@ -102,8 +96,6 @@
             </div>
         </div>
     </div>
-
-
 @endsection
 
 
