@@ -6,7 +6,8 @@
                 <div class="card">
                     <div class="card-header">Student Details Update</div>
                     <div class="card-body">
-                        <form action="{{ url('students/' . $student->id) }}" method="post">
+                        {{--                       <form action="{{ url('students/' . $student->id) }}" method="post" id="updateForm">--}}
+                        <form action="{{ route('students.update', $student->id) }}" method="post" id="updateForm">
                             @csrf
                             @method('PATCH')
 
@@ -45,7 +46,7 @@
                             @include('partials.guardian_details', ['guardian' => $guardian2, 'number' => 2])
                             @include('partials.guardian_details', ['guardian' => $guardian3, 'number' => 3])
 
-                            <button type="submit" class="btn btn-primary mt-3">Update</button>
+                            <button type="button" id="updateButton" class="btn btn-primary mt-3">Update</button>
 
 
                         </form>
@@ -55,30 +56,39 @@
         </div>
     </div>
 @endsection
-
 @section('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function () {
-            $('#editStudentForm').submit(function (e) {
-                e.preventDefault();
-                var studentId = $(this).data('student-id');
+            $('#updateButton').click(function () {
+                var formData = $('#updateForm').serialize();
                 $.ajax({
-                    url: '/students/' + studentId + '/edit',
-                    type: 'GET',
-                    dataType: 'json',
+                    type: 'POST',
+                    url: $('#updateForm').attr('action'),
+                    data: formData,
                     success: function (response) {
-                        $('#name').val(response.name);
-                        $('#full_name').val(response.full_name);
-                        $('#dob').val(response.dob);
-                        $('#address').val(response.address);
-                        $('#contact').val(response.contact);
-                        $('#email').val(response.email);
-
+                        Swal.fire({
+                            title: 'Update Success!',
+                            text: response.message,
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            //
+                            window.location.href = "{{route('students.index')}}"
+                        });
                     },
                     error: function (xhr, status, error) {
                         console.error(xhr.responseText);
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'An error occurred while updating data.',
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                     }
-
                 });
             });
         });
