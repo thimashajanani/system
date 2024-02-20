@@ -1,4 +1,4 @@
-@extends('student.layout')
+@extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -46,6 +46,8 @@
                             @include('partials.guardian_details', ['guardian' => $guardian3, 'number' => 3])
 
                             <button type="submit" class="btn btn-primary mt-3">Update</button>
+
+
                         </form>
                     </div>
                 </div>
@@ -53,3 +55,34 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+            $('#editStudentForm').submit(function (e) {
+                e.preventDefault();
+                var studentId = $(this).data('student-id');
+                $.ajax({
+                    url: '/students/' + studentId + '/edit',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        $('#name').val(response.name);
+                        $('#full_name').val(response.full_name);
+                        $('#dob').val(response.dob);
+                        $('#address').val(response.address);
+                        $('#contact').val(response.contact);
+                        $('#email').val(response.email);
+
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+
+                });
+            });
+        });
+    </script>
+@endsection
+
+

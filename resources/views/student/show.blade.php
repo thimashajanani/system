@@ -1,19 +1,36 @@
 @extends('layouts.app')
 @section('content')
-    <head>
-        <title>student</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="add_student" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-3">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Student System</h2>
+                        <h2>Student Registration System</h2>
                     </div>
                     @if (\Session::has('success'))
                         <div class="alert alert-success">
@@ -34,7 +51,7 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <a href="{{ url('/students/create') }}" class="btn btn-success btn-sm" title="Add New">
+                        <a href="{{ url('/students/create') }}" data-bs-toggle="model" data-bs-target="#add_student"  class="btn btn-success btn-sm" title="Add New">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New Student
                         </a>
                         <br/>

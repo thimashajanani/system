@@ -42,11 +42,14 @@ class StudentController extends Controllers
                     ]);
             }
             $student->guardians()->saveMany($guardians);
-            return redirect('students')->with('success', 'Student and Guardians Added!');
+            return response()->json(['success' => true, 'message' => 'Student and Guardians Added!', 'student_id' => $student->id]);
         } catch (\Exception $exception) {
-            return back()->withInput()->with('error', $exception->getMessage());
+            return response()->json(['success' => false, 'error' => $exception->getMessage()]);
         }
+
+
     }
+
 
     public function show($id)
     {
@@ -54,7 +57,7 @@ class StudentController extends Controllers
         return view('student.view', ['student' => $student])->with('students', $student);
     }
 
-    public function edit(string $id)
+    public function edit($id)
     {
         $student = Student::find($id);
         $guardian1 = $student->guardians->get(0);
@@ -62,10 +65,13 @@ class StudentController extends Controllers
         $guardian3 = $student->guardians->get(2);
 
         return view('student.edit', compact('student', 'guardian1', 'guardian2', 'guardian3'));
+        $student = Student::findOrFail($id);
+        return response()->json($student);
     }
 
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         try {
             $student = Student::findOrFail($id);
             $student->update($request->all());

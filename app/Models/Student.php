@@ -10,6 +10,8 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $table ="students";
+    protected $primaryKey ="id";
     protected $guarded = [];
     protected $fillable = [
         'name',
@@ -24,5 +26,11 @@ class Student extends Model
     public function guardians()
     {
         return $this->belongsToMany(Guardian::class, 'guardian_student');
+    }
+
+    public function editData($id)
+    {
+        $student = Student::findOrFail($id);
+        return response()->json($student);
     }
 }
