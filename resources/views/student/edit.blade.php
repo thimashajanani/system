@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('student.layout')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -6,17 +6,16 @@
                 <div class="card">
                     <div class="card-header">Student Details Update</div>
                     <div class="card-body">
-                        {{--                       <form action="{{ url('students/' . $student->id) }}" method="post" id="updateForm">--}}
-                        <form action="{{ route('students.update', $student->id) }}" method="post" id="updateForm">
+{{--                       <form action="{{ url('students/' . $student->id) }}" method="post" id="updateForm">--}}
+                        <form action="{{ route('students.update', $student->id) }}" method="POST" id="updateForm">
                             @csrf
                             @method('PATCH')
 
                             <div class="form-group">
                                 <label for="name">Full Name</label>
-                                <input type="text" name="name" id="name" value="{{ $student->name }}"
+                                <input type="text" name="name" id="name" value="{{ $student->name ?? ''}}"
                                        class="form-control">
                             </div>
-
                             <div class="form-group">
                                 <label for="full_name">Name with Initial</label>
                                 <input type="text" name="full_name" id="full_name" value="{{ $student->full_name }}"
@@ -41,14 +40,10 @@
                                 <input type="email" name="email" id="email" value="{{ $student->email }}"
                                        class="form-control">
                             </div>
-
                             @include('partials.guardian_details', ['guardian' => $guardian1, 'number' => 1])
                             @include('partials.guardian_details', ['guardian' => $guardian2, 'number' => 2])
                             @include('partials.guardian_details', ['guardian' => $guardian3, 'number' => 3])
-
                             <button type="button" id="updateButton" class="btn btn-primary mt-3">Update</button>
-
-
                         </form>
                     </div>
                 </div>

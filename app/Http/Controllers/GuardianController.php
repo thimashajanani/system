@@ -16,7 +16,6 @@ class GuardianController extends Controller
             'student_id' => []
         ];
         $guardian->students()->sync($request->students);
-
     }
 
     public function create()

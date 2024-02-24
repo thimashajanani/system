@@ -1,7 +1,5 @@
-@extends('layouts.app')
+@extends('student.layout')
 @section('content')
-
-
     <!-- Modal -->
     <div class="modal fade" id="add_student" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -22,8 +20,6 @@
             </div>
         </div>
     </div>
-
-
 
     <div class="container">
         <div class="row">
@@ -91,7 +87,7 @@
                                         <td>
                                             <a href="{{ route('students.show', ['student' => $item->id]) }}"
                                                class="btn btn-info m-2"> Show</a>
-                                            <a href="{{ route('students.edit', ['student' => $item->id]) }}"
+                                            <a href="/students/{{$item->id}}/edit"
                                                class="btn btn-warning ">Edit</a>
                                             <form method="POST"
                                                   action="{{route('students.destroy',['student' => $item->id])}}">

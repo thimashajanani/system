@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('student.layout')
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -14,18 +15,12 @@
                                     <div class="card-header">Personal Information</div>
                                     <div class="card-body">
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><strong>Full Name:</strong> {{ $student->name }}
-                                            </li>
-                                            <li class="list-group-item"><strong>Name with
-                                                    Initial:</strong> {{ $student->full_name }}</li>
-                                            <li class="list-group-item"><strong>Date of
-                                                    Birth:</strong> {{ $student->dob }}</li>
-                                            <li class="list-group-item">
-                                                <strong>Address:</strong> {{ $student->address }}</li>
-                                            <li class="list-group-item">
-                                                <strong>Contact:</strong> {{ $student->contact }}</li>
-                                            <li class="list-group-item"><strong>Email:</strong> {{ $student->email }}
-                                            </li>
+                                            <li class="list-group-item"><strong>Full Name:</strong> {{ $student->name?? ''}}</li>
+                                            <li class="list-group-item"><strong>Name with Initial:</strong> {{ $student->full_name }}</li>
+                                            <li class="list-group-item"><strong>Date of Birth:</strong> {{ $student->dob }}</li>
+                                            <li class="list-group-item"><strong>Address:</strong> {{ $student->address }}</li>
+                                            <li class="list-group-item"><strong>Contact:</strong> {{ $student->contact }}</li>
+                                            <li class="list-group-item"><strong>Email:</strong> {{ $student->email }}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -35,9 +30,11 @@
                                     <div class="card-header">Guardians</div>
                                     <div class="card-body">
                                         <ul class="list-group list-group-flush">
-                                            @foreach($student->guardians as $guardian)
+                                            @forelse($student->guardians as $guardian)
                                                 <li class="list-group-item">{{ $guardian->name }}</li>
-                                            @endforeach
+                                            @empty
+                                                <li class="list-group-item">No guardians found</li>
+                                            @endforelse
                                         </ul>
                                     </div>
                                 </div>

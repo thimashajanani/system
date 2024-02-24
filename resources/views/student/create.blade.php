@@ -6,8 +6,7 @@
             @csrf
             <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" name="name" id="name" class="form-control"
-                       placeholder="Enter Full Name">
+                <input type="text" name="name" id="name" class="form-control" placeholder="Enter Full Name">
             </div>
             <div class="form-group">
                 <label for="name">Name with Initial</label>
@@ -149,7 +148,7 @@
                     success: function (response) {
                         Swal.fire({
                             title: 'Good job!',
-                            text: 'You clicked the button!',
+                            text: response.message,
                             icon: 'success',
                             showCancelButton: true,
                             confirmButtonClass: 'btn btn-primary w-xs me-2 mt-2',
